@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /encuestas
+
+  # Excluir solicitudes a archivos de imagen (extensiones comunes)
+  RewriteCond %{REQUEST_FILENAME} !\.(jpg|jpeg|png|gif|webp|avif)$
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.html [QSA,L]
+</IfModule>
